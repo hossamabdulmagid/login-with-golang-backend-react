@@ -9,13 +9,15 @@ const App = () => {
     return (
         <>
             <Header/>
-            <Routes>
-                <Route path={'/'} exact element={<HomepageComponent/>}/>
-                <Route path={'/signin'} element={<SignIn/>}/>
-                <Route path={'/signup'} element={<SignUp/>}/>
-
-
-            </Routes>
+            <div className="App">
+                <header className="App-header">
+                    <Routes>
+                        <Route path={'/'} exact element={<HomepageComponent/>}/>
+                        <Route path={'/signin'} element={<SignIn/>}/>
+                        <Route path={'/signup'} element={<SignUp/>}/>
+                    </Routes>
+                </header>
+            </div>
         </>
 
     );

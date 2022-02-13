@@ -4,10 +4,10 @@ import Button from 'react-bootstrap/Button'
 const SignUp = () => {
     return (
         <>
-            <div className="App">
-                <header className="App-header">
+
                     <Form>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
+
                             <Form.Control
                                 type="email"
                                 placeholder="First Name"
@@ -16,10 +16,15 @@ const SignUp = () => {
                                 autoCapitalize="off"
                                 spellCheck="false"
                             />
+
+                            <Form.Text className="text-muted">
+                                never share your Information with anyone else.
+                            </Form.Text>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
+
                             <Form.Control
-                                type="email"
+                                type="text"
                                 placeholder="Last Name"
                                 autoComplete="off"
                                 autoCorrect="off"
@@ -29,6 +34,8 @@ const SignUp = () => {
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicPassword">
+
+
                             <Form.Control
                                 type="password"
                                 placeholder="Password"
@@ -52,8 +59,7 @@ const SignUp = () => {
                             SignUp
                         </Button>
                     </Form>
-                </header>
-            </div>
+
         </>
     )
 }
