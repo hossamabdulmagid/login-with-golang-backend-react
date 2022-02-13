@@ -1,6 +1,5 @@
 import logo from "../../logo.svg";
 import Gologo from "../../golang-go7318.jpg";
-import Header from '../../components/navbar/navbar.component'
 
 const HomepageComponent = () => {
     return (
@@ -17,7 +16,9 @@ const HomepageComponent = () => {
                         Welcome to Our App
                     </h1>
                     <p>
-                        Authentication in Golang with JWT and mongoDB and React
+                        <code>
+                            Authentication
+                        </code> in <code>Golang</code> with <code>JWT</code> and <code>mongoDB</code> and <code>React</code>
                     </p>
                 </header>
             </div>
