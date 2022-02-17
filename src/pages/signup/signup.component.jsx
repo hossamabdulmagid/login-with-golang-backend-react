@@ -1,66 +1,132 @@
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import {useEffect, useState} from 'react';
+import {DoSignup} from '../../redux/user/userAction'
+import {connect} from 'react-redux';
+import {useNavigate} from "react-router-dom";
 
-const SignUp = () => {
+const SignUp = ({DoSignup, LoggedIn}) => {
+
+    let navigate = useNavigate();
+
+
+    const [createUser, updatedCreateUser] = useState({
+        First_name: "",
+        Last_name: "",
+        Email: "",
+        Password: "",
+        Phone: ""
+    });
+    useEffect(() => {
+        if (LoggedIn) {
+            return navigate("/signin");
+        }
+    }, [LoggedIn]);
+
+
+    const handleChange = (e) => {
+        const {name, value} = e.target;
+        updatedCreateUser({...createUser, [name]: value})
+        console.log(createUser, `createuser While Typing`)
+    }
+
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        await DoSignup(createUser)
+    }
     return (
         <>
 
-                    <Form>
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form onSubmit={handleSubmit}>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
 
-                            <Form.Control
-                                type="email"
-                                placeholder="First Name"
-                                autoComplete="off"
-                                autoCorrect="off"
-                                autoCapitalize="off"
-                                spellCheck="false"
-                            />
+                    <Form.Control
+                        type="text"
+                        placeholder="First Name"
+                        autoComplete="off"
+                        autoCorrect="off"
+                        autoCapitalize="off"
+                        spellCheck="false"
+                        name="First_name"
+                        onChange={handleChange}
+                    />
 
-                            <Form.Text className="text-muted">
-                                never share your Information with anyone else.
-                            </Form.Text>
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Text className="text-muted">
+                        never share your Information with anyone else.
+                    </Form.Text>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
 
-                            <Form.Control
-                                type="text"
-                                placeholder="Last Name"
-                                autoComplete="off"
-                                autoCorrect="off"
-                                autoCapitalize="off"
-                                spellCheck="false"
-                            />
-                        </Form.Group>
-
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Control
+                        type="text"
+                        placeholder="Last Name"
+                        autoComplete="off"
+                        autoCorrect="off"
+                        autoCapitalize="off"
+                        spellCheck="false"
+                        name="Last_name"
+                        onChange={handleChange}
 
 
-                            <Form.Control
-                                type="password"
-                                placeholder="Password"
-                                autoComplete="off"
-                                autoCorrect="off"
-                                autoCapitalize="off"
-                                spellCheck="false"
-                            />
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
-                            <Form.Control
-                                type="number"
-                                placeholder="Phone"
-                                autoComplete="off"
-                                autoCorrect="off"
-                                autoCapitalize="off"
-                                spellCheck="false"
-                            />
-                        </Form.Group>
-                        <Button variant="primary" type="submit">
-                            SignUp
-                        </Button>
-                    </Form>
+                    />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Control
+                        type="email"
+                        placeholder="Email"
+                        autoComplete="off"
+                        autoCorrect="off"
+                        autoCapitalize="off"
+                        spellCheck="false"
+                        name="Email"
+                        onChange={handleChange}
+
+
+                    />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+
+
+                    <Form.Control
+                        type="password"
+                        placeholder="Password"
+                        autoComplete="off"
+                        autoCorrect="off"
+                        autoCapitalize="off"
+                        spellCheck="false"
+                        name="Password"
+                        onChange={handleChange}
+
+
+                    />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Control
+                        type="text"
+                        placeholder="Phone"
+                        autoComplete="off"
+                        autoCorrect="off"
+                        autoCapitalize="off"
+                        spellCheck="false"
+                        name="Phone"
+                        onChange={handleChange}
+
+                    />
+                </Form.Group>
+                <Button variant="primary" type="submit">
+                    SignUp
+                </Button>
+            </Form>
 
         </>
     )
 }
-export default SignUp;
+const mapStateToProps = state => ({
+    LoggedIn: state.user.profile.InsertedID,
+})
+const mapDispatchToProps = dispatch => ({
+    DoSignup: (createUser) => dispatch(DoSignup(createUser))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

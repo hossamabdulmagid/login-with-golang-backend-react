@@ -1,11 +1,12 @@
+import {Route, Routes} from "react-router-dom";
+import {connect} from 'react-redux';
 import './App.css';
 import HomepageComponent from './pages/homepage/homepage.component'
-import {Route, Routes} from "react-router-dom";
 import Header from "./components/navbar/navbar.component";
 import SignIn from "./pages/signin/signin.component";
 import SignUp from './pages/signup/signup.component'
 
-const App = () => {
+const App = ({}) => {
     return (
         <>
             <Header/>
@@ -23,4 +24,4 @@ const App = () => {
     );
 }
 
-export default App;
+export default connect(null, null)(App);

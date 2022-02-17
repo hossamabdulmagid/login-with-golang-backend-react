@@ -8,7 +8,7 @@ const HomepageComponent = () => {
                 <header className="App-header">
 
                     <p>
-                        <img src={Gologo} className="App-logo" alt="logogo"/>
+                        <img src={Gologo} className="App-logo" alt="go-logo"/>
 
                         <img src={logo} className="App-logo" alt="logo"/>
                     </p>
@@ -16,9 +16,7 @@ const HomepageComponent = () => {
                         Welcome to Our App
                     </h1>
                     <p>
-                        <code>
-                            Authentication
-                        </code> in <code>Golang</code> with <code>JWT</code> and <code>mongoDB</code> and <code>React</code>
+                        <code> Authentication </code> in <code>Golang</code> with <code>JWT</code> and <code>mongoDB</code> and <code>React</code>
                     </p>
                 </header>
             </div>
