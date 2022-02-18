@@ -4,8 +4,10 @@ import {useEffect, useState} from 'react';
 import {DoSignup} from '../../redux/user/userAction'
 import {connect} from 'react-redux';
 import {useNavigate} from "react-router-dom";
+import {useToast} from '@chakra-ui/react';
 
 const SignUp = ({DoSignup, LoggedIn}) => {
+    const toast = useToast()
 
     let navigate = useNavigate();
 
@@ -33,7 +35,7 @@ const SignUp = ({DoSignup, LoggedIn}) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await DoSignup(createUser)
+        await DoSignup(createUser,toast)
     }
     return (
         <>
@@ -126,7 +128,7 @@ const mapStateToProps = state => ({
     LoggedIn: state.user.profile.InsertedID,
 })
 const mapDispatchToProps = dispatch => ({
-    DoSignup: (createUser) => dispatch(DoSignup(createUser))
+    DoSignup: (createUser,toast) => dispatch(DoSignup(createUser,toast))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

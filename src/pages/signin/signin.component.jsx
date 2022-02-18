@@ -5,8 +5,12 @@ import {DoLogin} from "../../redux/user/userAction";
 import {connect} from "react-redux";
 import {useNavigate} from "react-router-dom";
 
-const SignIn = ({DoLogin,LoggedIn}) => {
+import {useToast} from '@chakra-ui/react';
+
+
+const SignIn = ({DoLogin, LoggedIn}) => {
     let navigate = useNavigate();
+    const toast = useToast()
 
     let [userInfo, UpdatedUserInfo] = useState({
         email: '',
@@ -29,7 +33,7 @@ const SignIn = ({DoLogin,LoggedIn}) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await DoLogin(userInfo)
+        await DoLogin(userInfo, toast)
     }
 
     return (
@@ -81,6 +85,6 @@ const mapStateToProps = state => ({
     LoggedIn: state.user.profile.user_id,
 })
 const mapDispatchToProps = dispatch => ({
-    DoLogin: (userInfo) => dispatch(DoLogin(userInfo))
+    DoLogin: (userInfo, toast) => dispatch(DoLogin(userInfo, toast))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

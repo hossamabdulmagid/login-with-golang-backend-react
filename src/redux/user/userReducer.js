@@ -1,7 +1,6 @@
 import {UserTypeAction} from "./userType";
 
 const INITIAL_STATE = {
-    currentUser: null,
     loading: false,
     error: null,
     profile: {
@@ -25,13 +24,11 @@ const userReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 loading: true,
-                currentUser: state.currentUser,
             };
         case UserTypeAction.LOGIN_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                currentUser: action.payload,
                 profile: {
                     ID: action.payload.ID,
                     Password: action.payload.Password,
@@ -54,23 +51,23 @@ const userReducer = (state = INITIAL_STATE, action) => {
             }
 
         case UserTypeAction.REGISTER_START:
-            return{
+            return {
                 ...state,
-                loading:true,
+                loading: true,
 
             }
 
         case UserTypeAction.REGISTER_SUCCESS:
-            return{
+            return {
                 ...state,
-                loading:false,
-                profile:action.payload
+                loading: false,
+                profile: action.payload
             }
         case UserTypeAction.REGISTER_SUCCESS:
-            return{
+            return {
                 ...state,
-                loading:false,
-                error:action.payload
+                loading: false,
+                error: action.payload
             }
 
         default:

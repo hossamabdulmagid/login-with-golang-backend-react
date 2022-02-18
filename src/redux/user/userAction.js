@@ -3,41 +3,57 @@ import axios from 'axios';
 
 let url = 'http://localhost:8000/';
 
-export const setCurrentUser = (user) => {
-    return {
-        type: UserTypeAction.SET_CURRENT_USER,
-        payload: user,
-    };
-};
-
 
 const loginStart = () => ({
     type: UserTypeAction.LOGIN_START
 })
 
-const loginSucces = (data) => ({
+const loginSuccess = (data) => ({
     type: UserTypeAction.LOGIN_SUCCESS,
     payload: data,
 })
 
-const loginError = (error) => ({
-    type: UserTypeAction.LOGIN_ERROR,
-    payload: error,
-});
+const loginError = (error) => (
+    {
+        type: UserTypeAction.LOGIN_ERROR,
+        payload: error,
+    });
 
-export const DoLogin = (userInfo) => {
+export const DoLogin = (userInfo, toast) => {
+    let hasError = false;
     console.log(userInfo)
     return (dispatch) => {
         dispatch(loginStart());
 
         axios.post(`${url}users/login`, userInfo)
-            .then((res) => {
-                dispatch(loginSucces(res.data))
+            .then((res, err) => {
+                console.log(res, `response`)
+                if (res.status === 200) {
+                    dispatch(loginSuccess(res.data))
+                    dispatch(
+                        toast({
+                            title: "Account Logged In.",
+                            description: "We've Logged In your account.",
+                            status: "success",
+                            duration: 9000,
+                            isClosable: true,
+                            position: 'top-right'
+                        })
+                    )
+                } else {
+                    dispatch(
+                        toast({
+                            title: "Some Thing Wrong.",
+                            description: err.response.data.error,
+                            status: "error",
+                            duration: 9000,
+                            isClosable: true,
+                            position: 'top-right'
+                        })
+                    )
+                }
             })
-            .catch(err => {
-                dispatch(loginError(err))
-                console.log(err, `error from redux actions`)
-            })
+
 
     }
 }
@@ -61,17 +77,25 @@ const registerError = (err) => ({
 })
 
 
-export const DoSignup = (createUser) => {
+export const DoSignup = (createUser, toast) => {
 
     return dispatch => {
         dispatch(registerStart())
         console.log(createUser, `createUser`)
         axios.post(`${url}users/signup`, createUser)
-
             .then((res) => {
                 dispatch(registerSuccess(res.data))
-
-                dispatch(DoLogin(createUser))
+                dispatch(DoLogin(createUser, toast))
+                dispatch(
+                    toast({
+                        title: "Account Created Success.",
+                        description: "We've Logged In your account.",
+                        status: "success",
+                        duration: 9000,
+                        isClosable: true,
+                        position: 'top-right'
+                    })
+                )
             })
             .catch(err => {
                 dispatch(registerError(err))
