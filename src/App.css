@@ -3,12 +3,15 @@
 }
 
 .App-logo {
-  height: 15vmin;
+  height: 4vmin;
   pointer-events: none;
+
 }
 .App-logo-navbar{
-  height: 5vmin;
+  height: 2vmin;
   pointer-events: none;
+  display: flex;
+
 }
 
 

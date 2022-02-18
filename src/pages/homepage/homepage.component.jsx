@@ -8,9 +8,10 @@ const HomepageComponent = () => {
                 <header className="App-header">
 
                     <p>
+                        <img src={logo} className="App-logo" alt="logo"/>
+
                         <img src={Gologo} className="App-logo" alt="go-logo"/>
 
-                        <img src={logo} className="App-logo" alt="logo"/>
                     </p>
                     <h1>
                         Welcome to Our App
