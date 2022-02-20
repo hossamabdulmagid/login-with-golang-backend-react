@@ -30,27 +30,27 @@ export const DoLogin = (userInfo, toast) => {
                 console.log(res, `response`)
                 if (res.status === 200) {
                     dispatch(loginSuccess(res.data))
-                    dispatch(
-                        toast({
-                            title: "Account Logged In.",
-                            description: "We've Logged In your account.",
-                            status: "success",
-                            duration: 9000,
-                            isClosable: true,
-                            position: 'top-right'
-                        })
-                    )
+                    // dispatch(
+                    //     toast({
+                    //         title: "Account Logged In.",
+                    //         description: "We've Logged In your account.",
+                    //         status: "success",
+                    //         duration: 9000,
+                    //         isClosable: true,
+                    //         position: 'top-right'
+                    //     })
+                    // )
                 } else {
-                    dispatch(
-                        toast({
-                            title: "Some Thing Wrong.",
-                            description: err.response.data.error,
-                            status: "error",
-                            duration: 9000,
-                            isClosable: true,
-                            position: 'top-right'
-                        })
-                    )
+                    // dispatch(
+                    //     toast({
+                    //         title: "Some Thing Wrong.",
+                    //         description: err.response.data.error,
+                    //         status: "error",
+                    //         duration: 9000,
+                    //         isClosable: true,
+                    //         position: 'top-right'
+                    //     })
+                    // )
                 }
             })
 
@@ -79,23 +79,23 @@ const registerError = (err) => ({
 
 export const DoSignup = (createUser, toast) => {
 
-    return dispatch => {
+    return (dispatch) => {
         dispatch(registerStart())
         console.log(createUser, `createUser`)
         axios.post(`${url}users/signup`, createUser)
             .then((res) => {
                 dispatch(registerSuccess(res.data))
                 dispatch(DoLogin(createUser, toast))
-                dispatch(
-                    toast({
-                        title: "Account Created Success.",
-                        description: "We've Logged In your account.",
-                        status: "success",
-                        duration: 9000,
-                        isClosable: true,
-                        position: 'top-right'
-                    })
-                )
+                // dispatch(
+                //     toast({
+                //         title: "Account Created Success.",
+                //         description: "We've Logged In your account.",
+                //         status: "success",
+                //         duration: 9000,
+                //         isClosable: true,
+                //         position: 'top-right'
+                //     })
+                // )
             })
             .catch(err => {
                 dispatch(registerError(err))
@@ -104,4 +104,8 @@ export const DoSignup = (createUser, toast) => {
     }
 }
 
+export const SignOut = (data) => ({
+    type: UserTypeAction.USER_SIGN_OUT,
+    payload: data,
+})
 

@@ -63,13 +63,31 @@ const userReducer = (state = INITIAL_STATE, action) => {
                 loading: false,
                 profile: action.payload
             }
-        case UserTypeAction.REGISTER_SUCCESS:
+        case UserTypeAction.REGISTER_ERROR:
             return {
                 ...state,
                 loading: false,
                 error: action.payload
             }
 
+
+        case UserTypeAction.USER_SIGN_OUT:
+            return {
+                loading: true,
+                profile: {
+                    ID: null,
+                    Password:  null,
+                    created_at:  null,
+                    email:  null,
+                    first_name:  null,
+                    last_name:  null,
+                    phone:  null,
+                    refresh_token: null,
+                    token:  null,
+                    updated_at:  null,
+                    user_id:  null,
+                }
+            }
         default:
             return state;
     }

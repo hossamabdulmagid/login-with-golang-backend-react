@@ -3,8 +3,13 @@ import {Container, Nav} from "react-bootstrap";
 import logo from "../../logo.svg";
 import Gologo from "../../golang-go7318.jpg";
 import {connect} from 'react-redux';
+import {SignOut} from "../../redux/user/userAction";
+import {useEffect} from "react";
 
-const Header = ({user}) => {
+const Header = ({user, SignOut}) => {
+    useEffect(() => {
+
+    }, [user])
     return (
         <>
             <Navbar bg="dark" variant="dark">
@@ -14,7 +19,7 @@ const Header = ({user}) => {
                         <img src={Gologo} className="App-logo-navbar" alt="logogo"/>
                     </Navbar.Brand>
                     <Nav className="me-auto">
-                        {user ? <Nav.Link href="/signin">logout</Nav.Link> :
+                        {user ? <Nav.Link onClick={SignOut}>logout</Nav.Link> :
                             <>
                                 <Nav.Link href="/signin">Login</Nav.Link>
                                 <Nav.Link href="/signup">Signup</Nav.Link>
@@ -31,4 +36,9 @@ const Header = ({user}) => {
 const mapStateToProps = state => ({
     user: state.user.profile.ID
 })
-export default connect(mapStateToProps)(Header);
+
+const mapDispatchToProps = dispatch => ({
+    SignOut: () => dispatch(SignOut())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
