@@ -11,7 +11,7 @@ const HomepageComponent = ({user, LoggedIn}) => {
         if (LoggedIn) {
             SetUserDisplayInformation(true);
         }
-    }, [])
+    }, [LoggedIn])
 
     return (
         <>
