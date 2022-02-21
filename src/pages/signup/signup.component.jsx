@@ -13,8 +13,8 @@ const SignUp = ({DoSignup, LoggedIn}) => {
 
 
     const [createUser, updatedCreateUser] = useState({
-        First_name: "",
-        Last_name: "",
+        FirstName: "",
+        LastName: "",
         Email: "",
         Password: "",
         Phone: ""
@@ -35,7 +35,7 @@ const SignUp = ({DoSignup, LoggedIn}) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await DoSignup(createUser,toast)
+        await DoSignup(createUser, toast)
     }
     return (
         <>
@@ -50,7 +50,7 @@ const SignUp = ({DoSignup, LoggedIn}) => {
                         autoCorrect="off"
                         autoCapitalize="off"
                         spellCheck="false"
-                        name="First_name"
+                        name="FirstName"
                         onChange={handleChange}
                     />
 
@@ -67,7 +67,7 @@ const SignUp = ({DoSignup, LoggedIn}) => {
                         autoCorrect="off"
                         autoCapitalize="off"
                         spellCheck="false"
-                        name="Last_name"
+                        name="LastName"
                         onChange={handleChange}
 
 
@@ -125,10 +125,10 @@ const SignUp = ({DoSignup, LoggedIn}) => {
     )
 }
 const mapStateToProps = state => ({
-    LoggedIn: state.user.profile.InsertedID,
+    LoggedIn: state.user.profile.ID,
 })
 const mapDispatchToProps = dispatch => ({
-    DoSignup: (createUser,toast) => dispatch(DoSignup(createUser,toast))
+    DoSignup: (createUser, toast) => dispatch(DoSignup(createUser, toast))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

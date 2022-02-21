@@ -6,15 +6,15 @@ const INITIAL_STATE = {
     profile: {
         ID: "",
         Password: "",
-        created_at: "",
-        email: "",
-        first_name: "",
-        last_name: "",
-        phone: "",
-        refresh_token: "",
-        token: "",
-        updated_at: "",
-        user_id: "",
+        CreatedAt: "",
+        Email: "",
+        FirstName: "",
+        LastName: "",
+        Phone: "",
+        RefreshToken: "",
+        Token: "",
+        UpdatedAt: "",
+        UserId: "",
     }
 };
 
@@ -32,15 +32,15 @@ const userReducer = (state = INITIAL_STATE, action) => {
                 profile: {
                     ID: action.payload.ID,
                     Password: action.payload.Password,
-                    created_at: action.payload.created_at,
-                    email: action.payload.email,
-                    first_name: action.payload.first_name,
-                    last_name: action.payload.last_name,
-                    phone: action.payload.phone,
-                    refresh_token: action.payload.refresh_token,
-                    token: action.payload.token,
-                    updated_at: action.payload.updated_at,
-                    user_id: action.payload.user_id,
+                    CreatedAt: action.payload.CreatedAt,
+                    Email: action.payload.Email,
+                    FirstName: action.payload.FirstName,
+                    LastName: action.payload.LastName,
+                    Phone: action.payload.Phone,
+                    RefreshToken: action.payload.RefreshToken,
+                    Token: action.payload.Token,
+                    UpdatedAt: action.payload.UpdatedAt,
+                    UserId: action.payload.UserId,
                 }
             }
         case UserTypeAction.LOGIN_ERROR:
@@ -77,15 +77,15 @@ const userReducer = (state = INITIAL_STATE, action) => {
                 profile: {
                     ID: null,
                     Password:  null,
-                    created_at:  null,
-                    email:  null,
-                    first_name:  null,
-                    last_name:  null,
-                    phone:  null,
-                    refresh_token: null,
-                    token:  null,
-                    updated_at:  null,
-                    user_id:  null,
+                    CreatedAt:  null,
+                    Email:  null,
+                    FirstName:  null,
+                    LastName:  null,
+                    Phone:  null,
+                    RefreshToken: null,
+                    Token:  null,
+                    UpdatedAt:  null,
+                    UserId:  null,
                 }
             }
         default:

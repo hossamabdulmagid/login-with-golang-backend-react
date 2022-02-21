@@ -16,7 +16,7 @@ const Header = ({user, SignOut}) => {
                 <Container>
                     <Navbar.Brand href="/">
                         <img src={logo} className="App-logo-navbar" alt="logo"/>
-                        <img src={Gologo} className="App-logo-navbar" alt="logogo"/>
+                        <img src={Gologo} className="App-logo-navbar" alt="logoGo"/>
                     </Navbar.Brand>
                     <Nav className="me-auto">
                         {user ? <Nav.Link onClick={SignOut}>logout</Nav.Link> :

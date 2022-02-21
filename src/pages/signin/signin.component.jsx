@@ -13,8 +13,8 @@ const SignIn = ({DoLogin, LoggedIn}) => {
     const toast = useToast()
 
     let [userInfo, UpdatedUserInfo] = useState({
-        email: '',
-        password: '',
+        Email: '',
+        Password: '',
     })
 
 
@@ -50,7 +50,7 @@ const SignIn = ({DoLogin, LoggedIn}) => {
                                 autoCorrect="off"
                                 autoCapitalize="off"
                                 spellCheck="false"
-                                name="email"
+                                name="Email"
                                 onChange={handleChange}
                             />
                             <Form.Text className="text-muted">
@@ -67,7 +67,7 @@ const SignIn = ({DoLogin, LoggedIn}) => {
                                 autoCorrect="off"
                                 autoCapitalize="off"
                                 spellCheck="false"
-                                name="password"
+                                name="Password"
                                 onChange={handleChange}
                             />
                         </Form.Group>
@@ -82,7 +82,7 @@ const SignIn = ({DoLogin, LoggedIn}) => {
 }
 
 const mapStateToProps = state => ({
-    LoggedIn: state.user.profile.user_id,
+    LoggedIn: state.user.profile.UserId,
 })
 const mapDispatchToProps = dispatch => ({
     DoLogin: (userInfo, toast) => dispatch(DoLogin(userInfo, toast))
